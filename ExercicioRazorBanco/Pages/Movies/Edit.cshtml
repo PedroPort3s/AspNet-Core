@@ -1,0 +1,55 @@
+﻿@page
+@model ExercicioRazorBanco.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Movie.ID" />
+            <div class="form-group">
+                <label asp-for="Movie.Titulo" class="control-label"></label>
+                <input asp-for="Movie.Titulo" class="form-control" />
+                <span asp-validation-for="Movie.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.DataDeLancamento" class="control-label"></label>
+                <input asp-for="Movie.DataDeLancamento" class="form-control" />
+                <span asp-validation-for="Movie.DataDeLancamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Genero" class="control-label"></label>
+                <input asp-for="Movie.Genero" class="form-control" />
+                <span asp-validation-for="Movie.Genero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Preco" class="control-label"></label>
+                <input asp-for="Movie.Preco" class="form-control" />
+                <span asp-validation-for="Movie.Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Avaliacao" class="control-label"></label>
+                <input asp-for="Movie.Avaliacao" class="form-control" />
+                <span asp-validation-for="Movie.Avaliacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

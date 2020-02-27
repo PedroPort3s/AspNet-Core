@@ -1,0 +1,82 @@
+﻿@page "{StrPesquisa?}"
+@model ExercicioRazorBanco.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col col-3">
+        <h1>Indice</h1>
+    </div>
+    <div class="col col-4">     
+        
+
+        
+    </div>
+</div>
+
+
+
+<form>
+    <p>
+        <select asp-for="GeneroFilme" asp-items="Model.Generos">
+            <option value="">Todos</option>
+        </select>
+        Title: <input type="text" asp-for="StrPesquisa" />
+        <input class="btn btn-primary" type="submit" value="Filtro" />
+    </p>
+    <p>
+        <button class="btn btn-success" asp-page="Create">Criar um novo</button>
+    </p>
+</form>
+
+<table class="table table-responsive table-borderless">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].DataDeLancamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Avaliacao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movie)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeLancamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Avaliacao)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Editar</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalhes</a> |
+                    <a class="text-danger" asp-page="./Delete" asp-route-id="@item.ID">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
